@@ -3,12 +3,15 @@
 
 <head>
    <meta charset="utf-8" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"></script>
+
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
-   <script src="https://code.jquery.com/jquery-git.min.js"></script>
    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 
 
@@ -28,34 +31,35 @@
       position: relative;
       display: block;
       margin: 0 auto;
-      width: 500px;
-      height: 500px;
+      width: 800px;
+      height: 800px;
    }
 
    #localVideo {
-      width: 150px;
+      /* width: 150px;
       height: 150px;
       position: absolute;
       top: 15px;
-      right: 15px;
+      right: 15px; */
+      width: 395px;
+      height: 395px;
    }
 
    #remoteVideo {
-      width: 500px;
-      height: 500px;
+      width: 395px;
+      height: 395px;
    }
 </style>
 
 <body>
    <div id="loginPage" class="container text-center">
-      <div class="row">
+      <!-- <div class="row">
 
          <video id="localVideoTag" playsinline controls loop muted>
-            <!-- <source src="../../../video/chrome.webm" type="video/webm"/> -->
             <source crossOrigin="anonymous" src="/videos/chrome.mp4" type="video/mp4" />
             <p>This browser does not support the video element.</p>
          </video>
-      </div>
+      </div> -->
 
       <div class="row">
          <div class="col-md-4 col-md-offset-4">
@@ -73,25 +77,42 @@
    </div>
 
    <div id="callPage" class="call-page">
-      <video id="localVideo" autoplay></video>
-      <video id="remoteVideo" autoplay></video>
+      <div class="row text-center">
+         <div class="col-md-6 col-lg-6">
+            <h2>Local</h2>
+            <video id="localVideo" playsinline controls loop muted autoplay>
+               <!-- <source src="../../../video/chrome.webm" type="video/webm"/> -->
+               <source crossOrigin="anonymous" src="/videos/chrome.mp4" type="video/mp4" />
+               <p>This browser does not support the video element.</p>
+            </video>
+         </div>
+         <div class="col-md-6 col-lg-6">
+            <h2>Remote</h2>
+
+            <video id="remoteVideo" autoplay></video>
+         </div>
+      </div>
+
+
 
       <div class="row text-center">
          <div class="col-md-12">
             <input id="callToUsernameInput" type="text" placeholder="username to call" />
             <button id="callBtn" class="btn-success btn">Call</button>
             <button id="hangUpBtn" class="btn-danger btn">Hang Up</button>
+            <button id="record" class="btn-danger btn" disabled>Start Recording</button>
+            <button id="download" class="btn-success btn" disabled>Download</button>
 
 
          </div>
       </div>
-
+      <!-- 
       <div class="row text-center">
          <div class="col-md-12">
             <button id="record" class="btn-danger btn" disabled>Start Recording</button>
             <button id="download" class="btn-success btn" disabled>Download</button>
          </div>
-      </div>
+      </div> -->
    </div>
    <script src="/recorder.js"></script>
 

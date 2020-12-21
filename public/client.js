@@ -102,10 +102,10 @@ function handleLogin(success) {
       } else {
          yourConn = new RTCPeerConnection(configuration);
       }
-      const videoDOM = $('#localVideoTag')[0]
+      const videoDOM = $('#localVideo')[0]
       const videoStream = videoDOM.captureStream(60)
-      localVideo.srcObject = videoStream;
-      localVideo.play();
+      // localVideo.srcObject = videoStream;
+      // localVideo.play();
       // setup stream listening 
       yourConn.addStream(videoStream);
       //when a remote user adds stream to the peer connection, we display it 
