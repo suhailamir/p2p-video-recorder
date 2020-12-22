@@ -17,7 +17,7 @@ conn.onmessage = function (msg) {
 
    switch (data.type) {
       case "login":
-         handleLogin(data.success);
+         handleLogin(data.success, data.isMaster);
          break;
       //when somebody wants to call us 
       case "offer":
@@ -67,6 +67,8 @@ var callBtn = document.querySelector('#callBtn');
 var hangUpBtn = document.querySelector('#hangUpBtn');
 
 var localVideo = document.querySelector('#localVideo');
+var localVideo1 = document.querySelector('#localVideo1');
+
 var remoteVideo = document.querySelector('#remoteVideo');
 
 var yourConn;
@@ -87,7 +89,7 @@ loginBtn.addEventListener("click", function (event) {
 
 });
 
-function handleLogin(success) {
+function handleLogin(success, isMaster) {
    if (success === false) {
       alert("Ooops...try a different username");
    } else {
@@ -102,8 +104,19 @@ function handleLogin(success) {
       } else {
          yourConn = new RTCPeerConnection(configuration);
       }
-      const videoDOM = $('#localVideo')[0]
-      const videoStream = videoDOM.captureStream(60)
+      let videoStream = "";
+      if (!isMaster) {
+         localVideo.style.display = "none";
+         const videoDOM = $('#localVideo1')[0]
+         videoStream = videoDOM.captureStream(60)
+      }
+      else {
+         localVideo1.style.display = "none";
+         const videoDOM = $('#localVideo')[0]
+         videoStream = videoDOM.captureStream(60)
+
+      }
+
       // localVideo.srcObject = videoStream;
       // localVideo.play();
       // setup stream listening 

@@ -45,6 +45,16 @@
       height: 395px;
    }
 
+   #localVideo1 {
+      /* width: 150px;
+      height: 150px;
+      position: absolute;
+      top: 15px;
+      right: 15px; */
+      width: 395px;
+      height: 395px;
+   }
+
    #remoteVideo {
       width: 395px;
       height: 395px;
@@ -83,6 +93,11 @@
             <video id="localVideo" playsinline controls loop muted autoplay>
                <!-- <source src="../../../video/chrome.webm" type="video/webm"/> -->
                <source crossOrigin="anonymous" src="/videos/chrome.mp4" type="video/mp4" />
+               <p>This browser does not support the video element.</p>
+            </video>
+            <video id="localVideo1" playsinline controls loop muted autoplay>
+               <!-- <source src="../../../video/chrome.webm" type="video/webm"/> -->
+               <source crossOrigin="anonymous" src="/videos/simi_swap_converted.mp4" type="video/mp4" />
                <p>This browser does not support the video element.</p>
             </video>
          </div>
